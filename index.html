@@ -320,5 +320,38 @@
   </main>
 
   <footer>© 2026 Umer Aslam · Web Design Portfolio</footer>
+  <!-- Your existing portfolio code above -->
+
+  <script>
+  (() => {
+    const card = document.getElementById("scrollDemoCard");
+    const section = document.getElementById("scroll-demo");
+
+    if (!card || !section) return;
+
+    function updateAnimation() {
+      const rect = section.getBoundingClientRect();
+      const progress = Math.max(
+        0,
+        Math.min(1, (window.innerHeight - rect.top) /
+          (rect.height + window.innerHeight))
+      );
+
+      card.style.transform =
+        `rotateX(${16 * (1 - progress)}deg) scale(${0.88 + 0.12 * progress})`;
+      card.style.opacity = 0.75 + 0.25 * progress;
+    }
+
+    window.addEventListener("scroll", updateAnimation, {
+      passive: true
+    });
+    window.addEventListener("resize", updateAnimation);
+    updateAnimation();
+  })();
+  </script>
+
+</body>
+</html>
+
 </body>
 </html>
